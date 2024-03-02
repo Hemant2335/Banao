@@ -67,11 +67,11 @@ const Blog = () => {
   return (
     <div>
       <Banner />
-
-      <div className="px-[15vw] py-[5vh]">
+      <div className="bg-[#FC5B66] top-[90vh] right-5  fixed flex md:hidden h-[7vh] shadow-3xl w-[7vh] items-center justify-center text-white rounded-[50%]"><FiEdit2 /></div>
+      <div className="md:px-[15vw] md:py-[5vh]">
         {/* Headings */}
-        <div className="flex justify-between mb-2">
-          <div className="flex gap-[1vw] items-center">
+        <div className="md:flex justify-between mb-2 hidden">
+          <div className="flex gap-[1vw] items-center ">
             <h2 className="text-black font-medium hover:cursor-pointer hover:text-black">
               All Posts({noofPost})
             </h2>
@@ -98,9 +98,17 @@ const Blog = () => {
           </div>
         </div>
         <hr />
+        <div className="flex px-[2vw] md:hidden items-center justify-between">
+            <h2 className="text-black font-medium hover:cursor-pointer hover:text-black">
+              Posts({noofPost})
+            </h2>
+            <button className="bg-[#EDEEF0] text-sm p-2 rounded-sm flex gap-2 items-center">
+              Filter : All <FiChevronDown />
+            </button>
 
+        </div>
         {/* Posts */}
-        <div className="flex mt-[5vh] justify-between">
+        <div className="flex  md:mt-[5vh] mt-[2vh] justify-between">
           <div className="flex flex-col gap-[2vh]">
             {/* Main Content */}
             <ArticleCard data={Posts[0]} />
@@ -110,7 +118,7 @@ const Blog = () => {
           </div>
 
           {/* Location */}
-          <div className="h-full w-full flex-col  flex items-end">
+          <div className="hidden h-full w-full flex-col  md:flex items-end">
             <div className="w-[18vw] flex justify-between pb-2 mt-[2vh] border-b-2 ">
               <div className="flex items-center gap-2">
                 <FiMapPin />

@@ -17,7 +17,7 @@ const MeetupCard = () => {
     }
 
     return (
-        <div className="w-[40vw] h-fit rounded-lg border-2">
+        <div className="md:w-[40vw] h-fit rounded-lg border-2">
           {/* Image */}
           <div className="w-full h-[25vh]">
             <img

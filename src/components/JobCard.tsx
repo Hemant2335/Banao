@@ -12,7 +12,7 @@ const JobCard = () => {
         view : 1.4
     }
     return (
-        <div className="w-[40vw] h-fit rounded-lg border-2">
+        <div className="md:w-[40vw] h-fit rounded-lg border-2">
           <div className="p-[2vh] ">
             <h1 className="text-sm font-medium">{data.cat}</h1>
             <div className="flex w-full justify-between items-center">
