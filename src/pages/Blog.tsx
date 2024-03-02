@@ -1,10 +1,13 @@
 import Banner from "../components/Banner";
+import Signin from "../components/Signin";
+import Navbar from "../components/Navbar";
 import {
   FiUserPlus,
   FiChevronDown,
   FiMapPin,
   FiEdit2,
   FiThumbsUp,
+  FiLogOut
 } from "react-icons/fi";
 import CardImg1 from "../assets/CardImages/Img1.jpeg";
 import AuthImg1 from "../assets/AuthImages/Img1.jpeg";
@@ -20,9 +23,12 @@ import ArticleCard from "../components/ArticleCard";
 import MeetupCard from "../components/MeetupCard";
 import JobCard from "../components/JobCard";
 const Blog = () => {
-  const [noofPost, setnoofPost] = useState(32);
+  const noofPost = 32;
   const [Locationvalue, setLocationvalue] = useState("Noida, India");
   const [isloggedin, setisloggedin] = useState(false);
+  const [isSignin, setisSignin] = useState(false);
+  const [joingroup, setjoingroup] = useState(false);
+
   const Posts = [
     {
       Img: CardImg1,
@@ -66,7 +72,10 @@ const Blog = () => {
 
   return (
     <div>
-      <Banner />
+        {isSignin && (<Signin  setisloggedin = {setisloggedin} setissignin={setisSignin}/>)}
+      <Navbar setissignin={setisSignin} isloggedin={isloggedin}/>
+       
+      <Banner setjoingroup={setjoingroup} joingroup = {joingroup}/>
       <div className="bg-[#FC5B66] top-[90vh] right-5  fixed flex md:hidden h-[7vh] shadow-3xl w-[7vh] items-center justify-center text-white rounded-[50%]"><FiEdit2 /></div>
       <div className="md:px-[15vw] md:py-[5vh]">
         {/* Headings */}
@@ -92,9 +101,10 @@ const Blog = () => {
             <button className="bg-[#EDEEF0] text-sm p-2 rounded-sm flex gap-2 items-center">
               Write a Post <FiChevronDown />
             </button>
-            <button className="bg-[#2F6CE5] text-white text-sm p-2 rounded-sm flex gap-2 items-center">
+            {!joingroup && (<button onClick={()=>setjoingroup(true)} className="bg-[#2F6CE5] text-white text-sm p-2 rounded-sm flex gap-2 items-center">
               <FiUserPlus /> Join Group
-            </button>
+            </button>)}
+            {joingroup && (<button onClick={()=>setjoingroup(false)} className="border-2 text-gray-400 text-sm p-2 rounded-sm flex gap-2 items-center"><FiLogOut /> Leave Group</button>)}
           </div>
         </div>
         <hr />
@@ -142,7 +152,7 @@ const Blog = () => {
                 <FiThumbsUp />
                 RECOMMENDED GROUPS
               </h1>
-              {!isloggedin && Groups.map((data)=>(<div className="flex justify-between items-center">
+              {isloggedin && Groups.map((data)=>(<div className="flex justify-between items-center">
                 <div className="mt-[2vh] flex items-center gap-2">
                   <div className="w-[6vh] h-[6vh] rounded-[50%] ">
                     <img

@@ -1,7 +1,11 @@
 import { FiMoreHorizontal , FiCalendar , FiEye ,FiShare2 , FiMapPin } from "react-icons/fi"
 import AuthImg1 from "../assets/AuthImages/Img4.jpeg";
+import { useState } from "react";
 
 const JobCard = () => {
+
+    const [isdrop, setisdrop] = useState(false)
+
     const data = {
         cat: "Job",
         topic: "Software Developer",
@@ -17,8 +21,15 @@ const JobCard = () => {
             <h1 className="text-sm font-medium">{data.cat}</h1>
             <div className="flex w-full justify-between items-center">
               <h1 className="text-lg font-bold">{data.topic}</h1>
-              <button className="text-xl">
-                <FiMoreHorizontal />
+              <button className="text-xl relative">
+                <FiMoreHorizontal onClick={()=>setisdrop(!isdrop)}/>
+                {isdrop && ( <div className="w-fit   bg-white absolute right-0 h-fit border-2 rounded-md">
+                    <ul className="text-sm gap">
+                        <li className="p-2 px-4 hover:bg-gray-200">Edit</li>
+                        <li className="p-2 px-4 hover:bg-gray-200">Report</li>
+                    </ul>
+                </div>)}
+               
               </button>
             </div>
             <div className="flex gap-[2vw] font-medium">

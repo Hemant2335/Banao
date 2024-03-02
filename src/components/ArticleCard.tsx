@@ -1,6 +1,9 @@
 import { FiMoreHorizontal , FiEye ,FiShare2 } from "react-icons/fi";
+import { useState } from "react";
 
 type ArticleCardProps = {
+
+
   data: {
     Img: string;
     cat: string;
@@ -13,6 +16,9 @@ type ArticleCardProps = {
 };
 
 const ArticleCard = ({ data }: ArticleCardProps) => {
+
+  const [isdrop, setisdrop] = useState(false)
+
   return (
     <div className="md:w-[40vw] h-fit rounded-lg border-2">
       {/* Image */}
@@ -27,8 +33,14 @@ const ArticleCard = ({ data }: ArticleCardProps) => {
         <h1 className="text-sm font-medium">{data.cat}</h1>
         <div className="flex w-full justify-between items-center">
           <h1 className="text-lg font-bold">{data.topic}</h1>
-          <button className="text-xl">
-            <FiMoreHorizontal />
+          <button className="text-xl relative">
+          <FiMoreHorizontal onClick={()=>setisdrop(!isdrop)}/>
+                {isdrop && ( <div className="w-fit   bg-white absolute right-0 h-fit border-2 rounded-md">
+                    <ul className="text-sm gap">
+                        <li className="p-2 px-4 hover:bg-gray-200">Edit</li>
+                        <li className="p-2 px-4 hover:bg-gray-200">Report</li>
+                    </ul>
+                </div>)}
           </button>
         </div>
         <p className="text-sm mt-[2vh]">{data.desc}</p>
