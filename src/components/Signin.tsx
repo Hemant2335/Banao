@@ -33,7 +33,7 @@ const Signin = ({ setisloggedin, setissignin }: SigninProps) => {
           {/* // Signin form */}
           <div
           onClick={() => setissignin(false)}
-          className=" hover:cursor-pointer text-white p-2 rounded-[50%] right-[10vw] bg-gray-500 absolute font-bold "
+          className="md:hidden flex hover:cursor-pointer text-white p-2 rounded-[50%] right-[10vw] bg-gray-500 absolute font-bold "
         >
           <FiX /> 
         </div>
